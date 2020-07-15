@@ -34,13 +34,17 @@ public class RomeNumbers {
 
     public static String parseRomanic(Integer calculateResult) {
         String result = "";
-        for (int i = 0; i < calculateResult / 10; i++)
+        if (calculateResult == 100)
+            return "C";
+        for (int i = 0; i < calculateResult / 50; i++)
+            result += "L";
+        for (int i = 0; i < calculateResult % 50 / 10; i++)
             result += "X";
         for (Map.Entry<String, Integer> entry : RomeNumbers.entrySet()) {
             if (calculateResult % 10 == entry.getValue())
                 result += entry.getKey();
         }
-
+        
         return result;
 
     }
